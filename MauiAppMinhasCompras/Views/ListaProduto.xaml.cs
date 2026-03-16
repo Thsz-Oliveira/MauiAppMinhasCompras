@@ -35,13 +35,13 @@ public partial class ListaProduto : ContentPage
         }
     }
 
-    private void txt_search_TextChanged(object sender, TextChangedEventArgs e)
+    private async void txt_search_TextChanged(object sender, TextChangedEventArgs e)
     {
 		string q = e.NewTextValue;
 
         lista.Clear();
 
-        List<Produto> tmp = await App.Db.Search();
+        List<Produto> tmp = await App.Db.Search(q);
 
         tmp.ForEach(i => lista.Add(i));
     }
